@@ -1,0 +1,160 @@
+import requests
+import json
+access_token = requests.post("https://api-bcbsflqa.zeomega.org/token?grant_type=client_credentials",
+                             headers={'Authorization': 'Basic SFlpM2pSZmlOdlBYa0puZGJZWXZHTHhmZ2pnYTo4U0xUZlpoMzFpbEZoQ1JtSkFsTzNuVWpDbmNh'})
+tok=access_token.json()['access_token']
+token1 = 'Bearer ' + tok
+print(token1)
+
+payload = """<epi:IN
+	xmlns:epi="http://schema.zeomega.org/Episode/Create"
+	xmlns:head="http://schema.zeomega.org/header"
+	xmlns:qm="http://schema.zeomega.org/queryparam">
+	<head:HEADER>
+		<head:TRANSACTIONID>TRANSACTIONID1</head:TRANSACTIONID>
+		<head:TIMESTAMP>2019-06-13T16:48:20Z</head:TIMESTAMP>
+		<head:SENDERID>SENDERID1</head:SENDERID>
+		<head:RECEIVERID>RECEIVERID1</head:RECEIVERID>
+		<head:TRANCODE>TRANCODE1</head:TRANCODE>
+	</head:HEADER>
+	<qm:QUERY_PARAMETERS>
+		<qm:PARAM>
+			<qm:VALUE>CREATE</qm:VALUE>
+			<qm:ITEM>OPERATION_FLAG</qm:ITEM>
+		</qm:PARAM>
+	</qm:QUERY_PARAMETERS>
+	<epi:EPISODE>
+		<epi:EPISODE_PROVIDERS>
+			<epi:EPISODE_PROVIDER>
+
+				<epi:SERVICE_LOCATION_ID>ADD4_HEP</epi:SERVICE_LOCATION_ID>
+				<epi:PROVIDER_ROLE_CD>TRT</epi:PROVIDER_ROLE_CD>
+				<epi:PROVIDER_ID>HEP</epi:PROVIDER_ID>
+			</epi:EPISODE_PROVIDER>
+		</epi:EPISODE_PROVIDERS>
+		<epi:EPISODE_DIAGNOSES>
+			<epi:EPISODE_DIAGNOSIS>
+				<epi:IS_PRIMARY>true</epi:IS_PRIMARY>
+				<epi:DIAGNOSIS_END_DT>2019-05-19</epi:DIAGNOSIS_END_DT>
+				<epi:DIAGNOSIS_START_DT>2019-05-16</epi:DIAGNOSIS_START_DT>
+				<epi:DIAGNOSIS_CD>L89.40</epi:DIAGNOSIS_CD>
+				<epi:DIAGNOSIS_TYPE_CD>ICD10</epi:DIAGNOSIS_TYPE_CD>
+			</epi:EPISODE_DIAGNOSIS>
+		</epi:EPISODE_DIAGNOSES>
+		<epi:EPISODE_SPECIFIC_FIELDS>
+			<epi:APPEAL_SPECIFIC_FIELDS>
+				<epi:APPEAL_SERVICES>
+					<epi:APPEAL_SERVICE>
+						<epi:SERVICE_DECISION>
+							<epi:NOTE>
+								<epi:NOTE_DT>2019-03-06T12:45:56Z</epi:NOTE_DT>
+								<epi:NOTE_TEXT>NOTE_TEXT1</epi:NOTE_TEXT>
+								<epi:NOTE_TYPE_CD>BE</epi:NOTE_TYPE_CD>
+							</epi:NOTE>
+							<epi:ASSIGNED_UNITS_QUALIFIER>MG</epi:ASSIGNED_UNITS_QUALIFIER>
+							<epi:ASSIGNED_DURATION_QUALIFIER>Day</epi:ASSIGNED_DURATION_QUALIFIER>
+							<epi:ASSIGNED_DURATION>3</epi:ASSIGNED_DURATION>
+							<epi:ASSIGNED_TIMEFRAME_QUALIFIER>Day</epi:ASSIGNED_TIMEFRAME_QUALIFIER>
+							<epi:ASSIGNED_TIMEFRAME>3</epi:ASSIGNED_TIMEFRAME>
+							<epi:IS_PEER_TO_PEER_CONSULTATION_REQUIRED>true</epi:IS_PEER_TO_PEER_CONSULTATION_REQUIRED>
+							<epi:CRITERIA_APPROVAL>true</epi:CRITERIA_APPROVAL>
+							<epi:INFO_RECEIVED_DT>2019-03-06T12:45:56Z</epi:INFO_RECEIVED_DT>
+							<epi:INFO_REQUESTED_DT>2019-03-06T12:45:56Z</epi:INFO_REQUESTED_DT>
+							<epi:ASSIGNED_END_DT>2019-01-30</epi:ASSIGNED_END_DT>
+							<epi:ASSIGNED_START_DT>2019-01-04</epi:ASSIGNED_START_DT>
+							<epi:ASSIGNED_UNITS>11</epi:ASSIGNED_UNITS>
+							<epi:DECISION_DT>2019-03-06T12:45:56Z</epi:DECISION_DT>
+							<epi:DECISION_RSN_CD>APISR-ISR</epi:DECISION_RSN_CD>
+							<epi:DECISION_CD>APISR</epi:DECISION_CD>
+						</epi:SERVICE_DECISION>
+						<epi:HCPC_CPT_UNITS>1</epi:HCPC_CPT_UNITS>
+						<epi:NDC_UNITS>1</epi:NDC_UNITS>
+						<epi:DURATION_QUALIFIER>Day</epi:DURATION_QUALIFIER>
+						<epi:REQUESTED_DURATION>31</epi:REQUESTED_DURATION>
+						<epi:REQUESTED_TIMEFRAME>3</epi:REQUESTED_TIMEFRAME>
+						<epi:REQUESTED_UNITS_QUALIFIER>MG</epi:REQUESTED_UNITS_QUALIFIER>
+						<epi:TIMEFRAME_QUALIFIER>Day</epi:TIMEFRAME_QUALIFIER>
+						<epi:URGENCY_TYPE_CD>AA014</epi:URGENCY_TYPE_CD>
+						<epi:EPISODE_CLASS_CD>Autoauth07</epi:EPISODE_CLASS_CD>
+						<epi:ACTUAL_COST>1</epi:ACTUAL_COST>
+						<epi:REQUEST_RECEIVED_DT>2019-03-08T12:45:56Z</epi:REQUEST_RECEIVED_DT>
+						<epi:REQUEST_END_DT>2019-01-30</epi:REQUEST_END_DT>
+						<epi:REQUEST_START_DT>2019-01-02</epi:REQUEST_START_DT>
+						<epi:REQUESTED_UNITS>11</epi:REQUESTED_UNITS>
+						<epi:PROCEDURE_MODIFIER_CD>0</epi:PROCEDURE_MODIFIER_CD>
+						<epi:PROCEDURE_CD>0001M</epi:PROCEDURE_CD>
+						<epi:PROCEDURE_TYPE_CD>CPT</epi:PROCEDURE_TYPE_CD>
+						<epi:PLACE_OF_SVC_CD>19</epi:PLACE_OF_SVC_CD>
+						<epi:SERVICE_TYPE_CD>AP1</epi:SERVICE_TYPE_CD>
+						<epi:REQUEST_CODE>GENERIC</epi:REQUEST_CODE>
+						<epi:DENIAL_CODE>12</epi:DENIAL_CODE>
+					</epi:APPEAL_SERVICE>
+				</epi:APPEAL_SERVICES>
+				<epi:APPEAL_STAYS>
+					<epi:APPEAL_STAY>
+						<epi:STAY_DECISION>
+							<epi:NOTE>
+								<epi:NOTE_DT>2019-03-06T12:45:56Z</epi:NOTE_DT>
+								<epi:NOTE_TEXT>NOTE_TEXT1</epi:NOTE_TEXT>
+								<epi:NOTE_TYPE_CD>CPN</epi:NOTE_TYPE_CD>
+							</epi:NOTE>
+							<epi:IS_PEER_TO_PEER_CONSULTATION_REQUIRED>true</epi:IS_PEER_TO_PEER_CONSULTATION_REQUIRED>
+							<epi:CRITERIA_APPROVAL>true</epi:CRITERIA_APPROVAL>
+							<epi:INFO_RECEIVED_DT>2019-03-06T12:45:56Z</epi:INFO_RECEIVED_DT>
+							<epi:INFO_REQUESTED_DT>2019-03-06T12:45:56Z</epi:INFO_REQUESTED_DT>
+							<epi:NEXT_REVIEW_DT>2019-01-01</epi:NEXT_REVIEW_DT>
+							<epi:ASSIGNED_END_DT>2019-01-01</epi:ASSIGNED_END_DT>
+							<epi:ASSIGNED_START_DT>2019-01-01</epi:ASSIGNED_START_DT>
+							<epi:ASSIGNED_DAYS>1</epi:ASSIGNED_DAYS>
+							<epi:DECISION_DT>2019-03-06T12:45:56Z</epi:DECISION_DT>
+							<epi:DECISION_RSN_CD>APISR-ISR</epi:DECISION_RSN_CD>
+							<epi:DECISION_CD>APISR</epi:DECISION_CD>
+						</epi:STAY_DECISION>
+						<epi:STAY_LOOKUP>
+							<epi:EXTERNAL_LINE_ID>EXTERNAL_LINE_ID1</epi:EXTERNAL_LINE_ID>
+						</epi:STAY_LOOKUP>
+						<epi:URGENCY_TYPE_CD>AA014</epi:URGENCY_TYPE_CD>
+						<epi:EPISODE_CLASS_CD>Autoauth07</epi:EPISODE_CLASS_CD>
+						<epi:REQUEST_RECEIVED_DT>2019-03-06T12:45:56Z</epi:REQUEST_RECEIVED_DT>
+						<epi:REQUESTED_DAYS>3</epi:REQUESTED_DAYS>
+						<epi:ACTUAL_ADMIT_DT>2019-01-30</epi:ACTUAL_ADMIT_DT>
+						<epi:EXPECTED_ADMIT_DT>2019-01-22</epi:EXPECTED_ADMIT_DT>
+						<epi:PLACE_OF_SVC_CD>19</epi:PLACE_OF_SVC_CD>
+						<epi:SERVICE_TYPE_CD>AP1</epi:SERVICE_TYPE_CD>
+					</epi:APPEAL_STAY>
+				</epi:APPEAL_STAYS>
+				<epi:URGENCY_TYPE_CD>1279</epi:URGENCY_TYPE_CD>
+				<epi:EPISODE_CLASS_CD>APPROV</epi:EPISODE_CLASS_CD>
+				<epi:REQUEST_RECEIVED_DT>2019-05-29T12:45:56Z</epi:REQUEST_RECEIVED_DT>
+				<epi:SOURCE_METHOD_CD>AP-Availity</epi:SOURCE_METHOD_CD>
+			</epi:APPEAL_SPECIFIC_FIELDS>
+		</epi:EPISODE_SPECIFIC_FIELDS>
+		<epi:EPISODE_COMMON>
+			<epi:EPISODE_STATUS>Open</epi:EPISODE_STATUS>
+			<epi:ASSIGNED_USER>AVL_aka00361327085</epi:ASSIGNED_USER>
+			<epi:REFERENCE_NUMBER>REF71232</epi:REFERENCE_NUMBER>
+			<epi:REFERENCE_TYPE>RE8212323</epi:REFERENCE_TYPE>
+			<epi:EPISODE_START_DT>2019-07-08T05:43:39Z</epi:EPISODE_START_DT>
+			<epi:EPISODE_TYPE_CD>Appeal</epi:EPISODE_TYPE_CD>
+			<epi:EXT_EPISODE_ID>PASS |45278|12645</epi:EXT_EPISODE_ID>
+		</epi:EPISODE_COMMON>
+		<epi:EPISODE_COVERAGE>
+			<epi:EFFECTIVE_DT>2012-07-15</epi:EFFECTIVE_DT>
+			<epi:GROUP_ID>0010400101-TRA-RX1040601</epi:GROUP_ID>
+			<epi:SUBSCRIBER_ID></epi:SUBSCRIBER_ID>
+		</epi:EPISODE_COVERAGE>
+		<epi:MEMBER_LOOKUP>
+			<epi:JIVA_MEMBER_ID>169866</epi:JIVA_MEMBER_ID>
+		</epi:MEMBER_LOOKUP>
+	</epi:EPISODE>
+</epi:IN>"""
+
+r = requests.post("https://api-bcbsflqa.zeomega.org/cio/api/episodes/v1.1",
+                  headers={'Content-Type': 'application/xml',
+                           'Accept': 'application/xml',
+                           'Authorization': token1},
+                  data=payload
+                  )
+
+print(dir(r))
+print(r.text)
